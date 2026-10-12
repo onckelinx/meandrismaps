@@ -1,0 +1,27 @@
+# Build environment for the .deb and AppImage.
+#
+# Built on Ubuntu 22.04 on purpose: the packages then only need glibc and
+# WebKitGTK as old as 22.04's, so they run on Ubuntu 22.04+, Debian 12+, Mint,
+# Pop!_OS... A build on a current Fedora would require Fedora-new libraries.
+# Used by build-deb-appimage.sh.
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Tauri's Linux prerequisites (https://tauri.app/start/prerequisites/).
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        build-essential pkg-config curl wget file ca-certificates xdg-utils \
+        libwebkit2gtk-4.1-dev libxdo-dev libssl-dev \
+        libayatana-appindicator3-dev librsvg2-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Node LTS.
+RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - \
+    && apt-get install -y --no-install-recommends nodejs \
+    && rm -rf /var/lib/apt/lists/*
+
+# Rust (stable).
+ENV RUSTUP_HOME=/usr/local/rustup CARGO_HOME=/usr/local/cargo PATH=/usr/local/cargo/bin:$PATH
+RUN curl -fsSL https://sh.rustup.rs | sh -s -- -y --profile minimal --default-toolchain stable
+
+WORKDIR /src

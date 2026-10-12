@@ -1,0 +1,75 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Meandris Maps",
+  "mainBinaryName": "meandrismaps",
+  "version": "1.0.0",
+  "identifier": "io.github.onckelinx.meandrismaps",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["deb", "rpm", "appimage", "nsis", "app", "dmg"],
+    "category": "Productivity",
+    "shortDescription": "Fast, local-first mind maps",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "publisher": "Rik Onckelinx - meandris.ai",
+    "copyright": "\u00a9 2026 Rik Onckelinx - meandris.ai",
+    "license": "GPL-3.0-or-later",
+    "longDescription": "Meandris Maps is a fast, local-first desktop mind-mapping tool: keyboard-first creation, automatic layout, classic branches, colours, boundaries, images, Markdown import/export, export and printing.",
+    "fileAssociations": [
+      {
+        "ext": [
+          "meandrismap"
+        ],
+        "name": "Meandris Map",
+        "description": "Meandris Maps document",
+        "role": "Editor",
+        "mimeType": "application/x-meandris-map",
+        "contentTypes": ["io.github.onckelinx.meandrismaps.map"],
+        "exportedType": {
+          "identifier": "io.github.onckelinx.meandrismaps.map",
+          "conformsTo": ["public.data", "public.content"]
+        }
+      }
+    ],
+    "linux": {
+      "deb": {
+        "files": {
+          "/usr/share/mime/packages/meandrismaps.xml": "mime/meandrismaps.xml"
+        },
+        "desktopTemplate": "linux/meandrismaps.desktop"
+      },
+      "rpm": {
+        "files": {
+          "/usr/share/mime/packages/meandrismaps.xml": "mime/meandrismaps.xml"
+        },
+        "desktopTemplate": "linux/meandrismaps.desktop"
+      }
+    },
+    "windows": {
+      "nsis": {
+        "installMode": "both"
+      }
+    },
+    "macOS": {
+      "minimumSystemVersion": "11.0",
+      "signingIdentity": "-"
+    }
+  }
+}

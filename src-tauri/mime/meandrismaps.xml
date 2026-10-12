@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-meandris-map">
+    <comment>Meandris Map</comment>
+    <sub-class-of type="application/zip"/>
+    <glob pattern="*.meandrismap"/>
+    <magic priority="60">
+      <match type="string" value="mimetypeapplication/x-meandris-map" offset="30"/>
+    </magic>
+  </mime-type>
+</mime-info>

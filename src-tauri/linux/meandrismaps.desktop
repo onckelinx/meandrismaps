@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Meandris Maps
+GenericName=Mind Map Editor
+Comment=Fast, local-first mind maps
+Categories=Office;
+Keywords=mind map;mindmap;brainstorm;outline;
+Exec={{exec}} %F
+TryExec={{exec}}
+Icon={{icon}}
+StartupWMClass={{exec}}
+Terminal=false
+MimeType=application/x-meandris-map;
